@@ -8,11 +8,12 @@ body {
 .menu-icon {
     display:block; 
     cursor: pointer;
-    margin-bottom: auto;
+    margin-bottom: 0;
+    padding-right: 100%;
 }
 #bottom{
     position: absolute;
-    bottom:0;
+    bottom: 0px;;
     margin-bottom: 0;
 }
 .line {
@@ -29,8 +30,28 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    height: 5%;
+    display: block;
 }
-.banner-content {
+.banner2 {
+    background-color: #767876;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    max-width: 100%;
+    max-height: 100px;
+    bottom:0 ;
+    display: block;
+    position:static;
+}
+.banner-content{
+    max-width: 1000px;
+    margin: 0 auto;
+    display:flex;
+    justify-content:space-around;
+    flex-direction: row;
+}
+.banner-content2{
     max-width: 1000px;
     margin: 0 auto;
     display:flex;
@@ -39,8 +60,8 @@ body {
     flex-direction: row;
 }
 .banner h1 {
-    font-size: 2em;
-    margin-top: 20px;
+    font-size: 1;
+    margin-top: 10px;
 }
 .banner p {
     font-size: 0.5em;
@@ -58,8 +79,12 @@ body {
     font-weight: bold;
 }
 .logo img {
-    max-width: 100%;
-    height:auto;
+    max-width: 120px;
+    max-height: 100px;;
+    margin-top: 17px;
+    margin-right: 100%;
+    padding-right: 50px;
+
 }
 .topnav{
     overflow:hidden;
