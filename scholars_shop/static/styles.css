@@ -5,22 +5,10 @@ body {
     padding: 0;
     box-sizing:border-box;
 }
-.menu-icon {
-    display:block; 
-    cursor: pointer;
-    margin-bottom: 0;
-    padding-right: 100%;
-}
 #bottom{
     position: absolute;
     bottom: 0px;;
     margin-bottom: 0;
-}
-.line {
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    margin: 6px 0;
 }
 .banner {
     background-color: #041607;
@@ -51,6 +39,7 @@ body {
     justify-content:space-around;
     flex-direction: row;
 }
+
 .banner-content2{
     max-width: 1000px;
     margin: 0 auto;
@@ -79,6 +68,7 @@ body {
     font-weight: bold;
 }
 .logo img {
+    object-position: 100%;
     max-width: 120px;
     max-height: 100px;;
     margin-top: 17px;
