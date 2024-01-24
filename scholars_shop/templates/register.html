@@ -6,7 +6,14 @@
         <title>My reg page</title>
     </head>
     <body>
-        <h1> This should be a form for new users that will get stored in a database. Will use forms.
-        </h1>
+        <h1>Welcome to Scholars shop</h1>
+        <p>Kindly provide the details below to create an account.</p>
+        <form action="/signup" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <button type="submit">Register</button>
+        </form>
     </body>
 </html>
