@@ -15,9 +15,10 @@ def register_page():
 def login_page():
     return render_template ('login.html') 
 
-@app.route('/market')
-def market():
-    return render_template('market.html')
+@app.route('/food')
+def food_page():
+    return render_template ('categories/food.html') 
+
 
 if __name__ == '__main__':
     app.run(debug=True)
