@@ -17,7 +17,7 @@ def login_page():
 
 @app.route('/food')
 def food_page():
-    return render_template ('categories/food.html') 
+    return render_template ('food.html') 
 
 
 if __name__ == '__main__':
