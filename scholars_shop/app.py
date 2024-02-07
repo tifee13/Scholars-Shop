@@ -16,8 +16,12 @@ def login_page():
     return render_template ('login.html') 
 
 @app.route('/food')
-def food_page():
+def foodpage():
     return render_template ('food.html') 
+
+@app.route('/fashion')
+def fashionpage():
+    return render_template('fashion.html')
 
 
 if __name__ == '__main__':
