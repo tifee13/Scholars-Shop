@@ -19,11 +19,11 @@ def create_database():
 
 @app.route('/')
 @app.route('/home')
-def homepage():
+def home():
     return render_template('index.html')
 
 @app.route('/register', methods=['GET', 'POST'])
-def register_page():
+def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -46,7 +46,7 @@ def register_page():
     return render_template('register.html')
 
 @app.route('/login', methods=['GET', 'POST'])
-def login_page():
+def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -65,7 +65,6 @@ def login_page():
             return "Invalid username or password"
         
     return render_template ('login.html') 
-
 
 
 if __name__ == '__main__':
