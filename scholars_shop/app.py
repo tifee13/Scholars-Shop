@@ -116,7 +116,7 @@ def login():
         
     return render_template ('login.html') 
 
-# @app.route('/products/<cat_id>')
+@app.route('/products/<cat_id>')
 def show_products():
     cat_id = request.args.get('cat_id')
 
