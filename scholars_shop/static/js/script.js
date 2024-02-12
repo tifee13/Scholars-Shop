@@ -10,4 +10,10 @@ console.log(dropdown);
       dropdownContent.style.display = "block";
     }
   });
-  
+  function toggleSidebar() {
+    var sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("active");
+  }
+document.getElementById('openSidebar').addEventListener('click', function() {
+  document.getElementById('sidebar').style.width = '250px'; // Adjust the width as needed
+});
