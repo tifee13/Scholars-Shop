@@ -21,11 +21,11 @@ def create_database():
     
     # Seed categories data
     categories = [
-        ('Food',),
-        ('Fashion',),
-        ('Computing',),
-        ('Phones',),
-        ('Electronics',)
+        ('food',),
+        ('fashion',),
+        ('books',),
+        ('gadgets',),
+        ('electronics',)
     ]
 
     c.executemany("INSERT INTO categories (name) VALUES (?)", categories)
@@ -35,8 +35,8 @@ def create_database():
                 name TEXT NOT NULL,
                 description TEXT NOT NULL,
                 image BLOB NOT NULL,
-                category TEXT NOT NULL,
-                FOREIGN KEY (category) REFERENCES categories(name2)
+                category_id INT NOT NULL,
+                FOREIGN KEY (category_id) REFERENCES categories(id)
                 )''')
     
     # Seed products data
@@ -49,7 +49,7 @@ def create_database():
         ('Product 6', 'Description 6', 'image6.jpg', 1)
     ]
 
-    c.executemany("INSERT INTO products (name, description, image, category) VALUES (?, ?, ?, ?)", sample_products)
+    c.executemany("INSERT INTO products (name, description, image, category_id) VALUES (?, ?, ?, ?)", sample_products)
 
     conn.commit()
     conn.close()
@@ -105,59 +105,50 @@ def login():
         
     return render_template ('login.html') 
 
-@app.route('/food')
-def show_food():
-    conn = sqlite3.connect('scholars.db')
-    c = conn.cursor() 
-    c.execute('SELECT * FROM products WHERE category="Food"')
-    food_items = c.fetchall()
-    conn.close()
-    
-    return render_template('food.html', food_items=food_items)
+@app.route('/product/<category>')
+def show_product(category):
+    food_menu_links = ["Breakfast", "Lunch", "Dinner", "Desserts", "Drinks"]
+    books_menu_links =["Science", "Art", "Engineering", "Finance"]
+    fashion_menu_links =["Clothes", "Bags", "Shoes", "Jewelries"]
+    electronics_menu_links = ["Television", "Air-conditioners", "Refrigerator", "Fans"]
+    gadgets_menu_links = ["Phones", "Laptops", "Gaming", "Accesories"]
 
-@app.route('/fashion')
-def show_fashion():
-    conn = sqlite3.connect('scholars.db')
-    c = conn.cursor() 
-    c.execute('SELECT * FROM products WHERE category="Fashion"')
-    fashion_items = c.fetchall()
-    conn.close()
-    
-    return render_template('fashion.html', fashion_items=fashion_items)
+    food_image ="main_food.png"
+    fashion_image="main_fashion.png"
+    books_image ="main_books.png"
+    gadgets_image ="main_gadgets.png"
+    electronics_image ="main_electronics.png"
 
-@app.route('/computing')
-def show_computing():
-    conn = sqlite3.connect('scholars.db')
-    c = conn.cursor() 
-    c.execute('SELECT * FROM products WHERE category="Computing"')
-    computing_items = c.fetchall()
-    conn.close()
-    
-    return render_template('computing.html', computing_items=computing_items)
+    menu_links = []
+    banner_img = ""
+    if category == "food":
+        menu_links = food_menu_links
+        banner_img = food_image
+    elif category == "fashion":
+        menu_links = fashion_menu_links
+        banner_img = fashion_image
+    elif category == "books":
+        menu_links = books_menu_links
+        banner_img = books_image
+    elif category == "gadgets":
+        menu_links = gadgets_menu_links
+        banner_img = gadgets_image
+    elif category == "electronics":
+        menu_links = electronics_menu_links
+        banner_img = electronics_image
 
-@app.route('/phones')
-def show_phones():
     conn = sqlite3.connect('scholars.db')
-    c = conn.cursor() 
-    c.execute('SELECT * FROM products WHERE category="Phones"')
-    phones_items = c.fetchall()
-    conn.close()
-    
-    return render_template('phones.html', phones_items=phones_items)
+    c = conn.cursor()
+    c.execute("SELECT * FROM products p JOIN categories c ON p.category_id = c.id WHERE c.name =?", (category,))
+    items = c.fetchall()
+    conn.close
 
-@app.route('/electronics')
-def show_electronics():
-    conn = sqlite3.connect('scholars.db')
-    c = conn.cursor() 
-    c.execute('SELECT * FROM products WHERE category="Electronics"')
-    electronics_items = c.fetchall()
-    conn.close()
-    
-    return render_template('phones.html', electronics_items=electronics_items)
+    return render_template("products.html", products = items, category = category, menu_links=menu_links, banner_img = banner_img)
+
 
 @app.route('/products/<cat_id>')
-def show_products():
-    cat_id = request.args.get('cat_id')
+def show_products(cat_id):
+    # cat_id = request.args.get('cat_id')
 
     if cat_id is not None:
         cat_id = int(cat_id)
@@ -186,3 +177,7 @@ def show_products():
 if __name__ == '__main__':
     create_database()
     app.run(debug=True)
+
+
+   
+    
