@@ -26,9 +26,9 @@
         <div class="topBar">
           <h1>{{ category }}</h1>
           <div class="links">
-            <a href="/login"><i class="fa-regular fa-user"></i>Account</a>
-            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
-            <a href="inbox.html"><i class="fa-regular fa-envelope"></i>Inbox</a>
+            <a href="/login"><i class="fa-regular fa-user"></i><p>Account</p></a>
+            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i><p>Cart</p></a>
+            <a href="inbox.html"><i class="fa-regular fa-envelope"></i><p>Inbox</p></a>
           </div>
         </div>
       </div>
@@ -39,6 +39,11 @@
         </div>
     </header>
     <div class="mainBody">
+      <div class="mobileOptions">
+        <a href="/login"><i class="fa-regular fa-user"></i><p>Account</p></a>
+        <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i><p>Cart</p></a>
+        <a href="inbox.html"><i class="fa-regular fa-envelope"></i><p>Inbox</p></a>
+      </div>
       <div class="main_products">
         <img src="{{ url_for('static', filename='images/' + banner_img) }}" width="50%" alt="{{ category }}">
       </div>
