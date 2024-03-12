@@ -41,12 +41,12 @@ def create_database():
     
     # Seed products data
     sample_products = [
-        ('Product 1', 'Description 1', 'image1.jpg', 1),
-        ('Product 2', 'Description 2', 'image2.jpg', 2),
-        ('Product 3', 'Description 3', 'image3.jpg', 3),
-        ('Product 4', 'Description 4', 'image4.jpg', 4),
-        ('Product 5', 'Description 5', 'image5.jpg', 5),
-        ('Product 6', 'Description 6', 'image6.jpg', 1)
+        ('Hamburger', "Juicy beef patty, melted cheese, crisp lettuce, and tangy sauce sandwiched in a soft bun - your ultimate burger satisfaction awaits!", 'https://images.pexels.com/photos/1251198/pexels-photo-1251198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 1),
+        ('Red Gown', "Elegant scarlet gown: flowing fabric, flattering silhouette, intricate details. Embrace sophistication and grace with every step in this timeless ensemble.", 'https://images.pexels.com/photos/7083249/pexels-photo-7083249.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 2),
+        ('Secret plan to rule the world', "In 'Secret to Rule the World,' discover strategic insights, psychological tactics, and historical parallels for mastering influence and leadership.", 'https://images.pexels.com/photos/1765033/pexels-photo-1765033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 3),
+        ('Hovex Air Drone', 'Introducing the Hovex Air Drone: Cutting-edge aerial technology for precision surveillance, mapping, and environmental monitoring in a compact and agile design.', 'https://images.pexels.com/photos/336232/pexels-photo-336232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 4),
+        ('iPhone XR', "The iPhone XR: Experience brilliance with a stunning Liquid Retina display, advanced Face ID, and breakthrough camera system for capturing life's moments.", 'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 5),
+        ('Rice and Soup', "Delight in the comforting simplicity of a steaming bowl of fragrant rice paired with a hearty, flavorful soup brimming with wholesome ingredients.", 'https://images.pexels.com/photos/4611425/pexels-photo-4611425.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 1)
     ]
 
     c.executemany("INSERT INTO products (name, description, image, category_id) VALUES (?, ?, ?, ?)", sample_products)

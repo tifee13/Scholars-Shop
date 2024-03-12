@@ -12,6 +12,7 @@
   <!-- <link rel="shortcut icon" type="image/png" href="sampleImage.jpg"> -->
 
   <script src="https://kit.fontawesome.com/ddebf545f0.js" crossorigin="anonymous"></script>
+
   <title>Scholars Shop Food</title>
 </head>
 
@@ -24,9 +25,9 @@
       <!-- <div class="logo">
           <img src="{{ url_for('static', filename='images/logo.png') }}" width="400px" alt="Scholars Shop Logo">
         </div> -->
-      <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+      <div class="hamburger" onclick="toggleBar()"><i class="fa-solid fa-bars"></i></div>
       <div class="topBar">
-        <h1>{{ category }}</h1>
+        <h1 class="header">{{ category }}</h1>
         <div class="links">
           <a href="/login"><i class="fa-regular fa-user"></i>
             <p>Account</p>
@@ -41,11 +42,49 @@
       </div>
     </div>
     <div class="sideBar">
-      {% for link in menu_links %}
-      <a href="/{{ link }}"><i class="nav-item"></i> {{ link }}</a>
-      {% endfor %}
-    </div>
+      <a href="/" class="nav-item">
+        <i class="fa-solid fa-house"></i> Home
+      </a>
+      <a href="/product/food" class="nav-item">
+        <i class="fa-solid fa-utensils"></i> Food
+      </a>
+      <a href="/product/fashion" class="nav-item">
+        <i class="fa-solid fa-shirt"></i> Fashion
+      </a>
+      <a href="/product/books" class="nav-item">
+        <i class="fa-solid fa-book"></i> Books
+      </a>
+      <a href="/product/gadgets" class="nav-item">
+        <i class="fa-solid fa-mobile-screen-button"></i> Gadgets
+      </a>
+      <a href="/product/electronics" class="nav-item">
+        <i class="fa-solid fa-plug"></i> Electronics
+      </a>
+  </div>
   </header>
+  <!-- MObile sidebar -->
+  <nav class="mobile-nav">
+      <ul>
+        <li><a href="/" class="nav-item">
+          <i class="fa-solid fa-house"></i> <p>Home</p>
+        </a></li>
+        <li><a href="/product/food" class="nav-item">
+          <i class="fa-solid fa-utensils"></i><p>Food</p>
+        </a></li>
+        <li><a href="/product/fashion" class="nav-item">
+          <i class="fa-solid fa-shirt"></i> <p>Fashion</p>
+        </a></li>
+        <li><a href="/product/books" class="nav-item">
+          <i class="fa-solid fa-book"></i> <p>Books</p>
+        </a></li>
+        <li><a href="/product/gadgets" class="nav-item">
+          <i class="fa-solid fa-mobile-screen-button"></i> <p>Gadgets</p>
+        </a></li>
+        <li><a href="/product/electronics" class="nav-item">
+          <i class="fa-solid fa-plug"></i> <p>Electronics</p>
+        </a></li>
+      </ul>
+  </nav>
   <div class="mainBody">
     <div class="mobileOptions">
       <a href="/login"><i class="fa-regular fa-user"></i>
@@ -61,11 +100,11 @@
     <div class="main_products">
       <img src="{{ url_for('static', filename='images/' + banner_img) }}" width="50%" alt="{{ category }}">
     </div>
-    <!-- <p>no listed ah ahahhhh items placeholder</p> -->
     <p class="products-title tagline">{{ category }} products</p>
     <div class="product-cards">
       {% for product in products %}
       <div class="card">
+        <div class="card-image"><img src="{{product[3]}}" alt="{{product[2]}}"></div>
         <p class="p-name">{{product[1]}}</p>
         <p class="p-description">{{product[2]}}</p>
         <button  class="cart-btn" type="button">Add to cart</button>
@@ -73,7 +112,20 @@
       {% endfor %}
     </div>
   </div>
-  <script src="script.js"></script>
+  <script type="script" src="{{ url_for('static', filename='script.js')}}"></script>
+  <script>
+            var hamburger = document.getElementsByClassName("hamburger")[0]
+            var mobileNav = document.getElementsByClassName("mobile-nav")[0]
+
+            function toggleBar() {
+                // hamburger.addEventListener("click", () =>{
+                //   console.log("click")
+                //   mobileNav.classList.toggle("active")
+                // })
+                mobileNav.classList.toggle("active")
+            }
+            
+  </script>
 </body>
 
 </html>

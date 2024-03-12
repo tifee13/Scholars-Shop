@@ -21,11 +21,12 @@
     </div>
     <header class="banner">
       <div class="inner-banner">
-        <div class="logo">
+        <!-- <div class="logo">
           <img src="{{ url_for('static', filename='images/logo.png') }}" width="400px" alt="Scholars Shop Logo">
-        </div>
+        </div> -->
+        <div class="hamburger" onclick="toggleBar()"><i class="fa-solid fa-bars"></i></div>
         <div class="topBar">
-          <h1>Scholars Shop</h1>
+          <h1 class="header">Scholars Shop</h1>
           <div class="links">
             <a href="/login"><i class="fa-regular fa-user"></i>Account</a>
             <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
@@ -35,6 +36,9 @@
       </div>
 
         <div class="sideBar">
+          <a href="/" class="nav-item">
+            <i class="fa-solid fa-house"></i> Home
+          </a>
           <a href="/product/food" class="nav-item">
             <i class="fa-solid fa-utensils"></i> Food
           </a>
@@ -52,9 +56,119 @@
           </a>
       </div>
     </header>
+    <!-- MObile sidebar -->
+  <nav class="mobile-nav">
+    <ul>
+      <li><a href="/" class="nav-item">
+        <i class="fa-solid fa-house"></i> <p>Home</p>
+      </a></li>
+      <li><a href="/product/food" class="nav-item">
+        <i class="fa-solid fa-utensils"></i><p>Food</p>
+      </a></li>
+      <li><a href="/product/fashion" class="nav-item">
+        <i class="fa-solid fa-shirt"></i> <p>Fashion</p>
+      </a></li>
+      <li><a href="/product/books" class="nav-item">
+        <i class="fa-solid fa-book"></i> <p>Books</p>
+      </a></li>
+      <li><a href="/product/gadgets" class="nav-item">
+        <i class="fa-solid fa-mobile-screen-button"></i> <p>Gadgets</p>
+      </a></li>
+      <li><a href="/product/electronics" class="nav-item">
+        <i class="fa-solid fa-plug"></i> <p>Electronics</p>
+      </a></li>
+    </ul>
+</nav>
     <div class="mainBody">
-      <p>no listed items placeholder</p>
+      <div class="mobileOptions">
+        <a href="/login"><i class="fa-regular fa-user"></i>
+          <p>Account</p>
+        </a>
+        <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>
+          <p>Cart</p>
+        </a>
+        <a href="inbox.html"><i class="fa-regular fa-envelope"></i>
+          <p>Inbox</p>
+        </a>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <img src="https://images.pexels.com/photos/2679323/pexels-photo-2679323.jpeg" alt="commerce">
+        <div class="overlay"></div>
+        <div class="hero-description">
+          <h1 class="header-text"> Buy and Sell <br> Stuff on Campus</h1>
+          <a class="hero-btn" href="/login">Get Started</a>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section class="categories">
+        <h3 class="sub-header">Categories</h3>
+        <p class="section-tagline"><em>Browse top categories in our store today</em></p>
+        <div class="category-container">
+          <div class="category-card">
+            <div class="category-image">
+              <img src="https://images.pexels.com/photos/135620/pexels-photo-135620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="fashion">
+            </div>
+            <a class="category-btn" href="/product/fashion">Fashion</a>
+          </div>
+          <div class="category-card">
+            <div class="category-image">
+              <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="fashion">
+            </div>
+            <a class="category-btn" href="/product/food">Food</a>
+          </div>
+          <div class="category-card">
+            <div class="category-image">
+              <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="fashion">
+            </div>
+            <a class="category-btn" href="/product/books">Books</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why choose Us -->
+      <section class="benefits">
+        <h3 class="sub-header">Why choose us</h3>
+        <p class="section-tagline"><em>Enjoy premium benefits when you use our store</em></p>
+        <div class="benefits-con">
+          <div class="benefit-container">
+            <div class="icon-container"><i class="fa-solid fa-lock"></i></div>
+            <div class="benefit-description">
+              <h4 class="benefit-header">In-campus trade security</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo voluptatum dolores sed veniam neque adipisci voluptas pariatur, maxime quam eveniet ipsa consequatur cumque aliquid aliquam eos et perspiciatis reiciendis reprehenderit.</p>
+            </div>
+          </div>
+          <div class="benefit-container">
+            <div class="icon-container"><i class="fa-solid fa-globe"></i></div>
+            <div class="benefit-description">
+              <h4 class="benefit-header">Large ecosystem</h4>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo voluptatum dolores sed veniam neque adipisci voluptas pariatur, maxime quam eveniet ipsa consequatur cumque aliquid aliquam eos et perspiciatis reiciendis reprehenderit.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to action -->
+      <section class="cta">
+        <h1 class="call-to-action-header">Start shopping for stuff in Campus</h1>
+        <a class="cta-button" href="/signup">Get Started</a>
+      </section>
     </div>
   <script src="script.js"></script>
+  <script>
+    var hamburger = document.getElementsByClassName("hamburger")[0]
+    var mobileNav = document.getElementsByClassName("mobile-nav")[0]
+
+    function toggleBar() {
+        // hamburger.addEventListener("click", () =>{
+        //   console.log("click")
+        //   mobileNav.classList.toggle("active")
+        // })
+        mobileNav.classList.toggle("active")
+    }
+    
+</script>
   </body>
 </html>
