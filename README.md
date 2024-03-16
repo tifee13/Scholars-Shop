@@ -25,6 +25,6 @@ Scholars Shop aims to evolve into a comprehensive platform with additional featu
 - **Location services**
 - **Real-time messaging**
 - **Notfication System**
-- **Secured Transactions/Payment options*8
+- **Secured Transactions/Payment options**
 
 This project is hosted on [Render.com](https://render.com) and contributions are welcome!
