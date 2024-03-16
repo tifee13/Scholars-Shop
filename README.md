@@ -17,6 +17,14 @@ Scholars Shop aims to evolve into a comprehensive platform with additional featu
 
 - **Login Manager**: Implement a robust user authentication system to ensure secure access to the platform and personalized user experiences.
 - **Cart Functionality**: Introduce a shopping cart feature that allows users to add items to their cart for easy checkout.
-- **User Details**: Enable users to manage their profiles, including personal information, preferences, and transaction history.
+- **User Profiles**: Enable users to manage their profiles, including personal information, preferences, and transaction history.
+- **Categorized Sections**
+  - Goods/Services
+  - New?Fairly Used
+- **Search and Filter**
+- **Location services**
+- **Real-time messaging**
+- **Notfication System**
+- **Secured Transactions/Payment options*8
 
 This project is hosted on [Render.com](https://render.com) and contributions are welcome!
