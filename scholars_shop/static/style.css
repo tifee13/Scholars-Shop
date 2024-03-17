@@ -18,7 +18,6 @@ h1, p, body{
 form {
     color: #0a490e;
     border-radius: 5px;
-    background-color: #f2f2f2;
     padding: 20px;
 }
 
@@ -740,4 +739,63 @@ display: block;
             background-color: var(--white);
         }
     }
+}
+/* Add your CSS styles here */
+
+body.z {
+    background-color: #e0d4b8; /* Set the background color for the entire page */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 20px;
+    height: 100vh; /* Set the height of the body to 100% of the viewport height */
+}
+
+.container {
+    border-radius: 10px; /* Add some border radius to the container */
+    display: flex; /* Use flexbox to align items */
+    flex-direction: column; /* Stack items vertically */
+    max-width: 50%;
+}
+
+h1 {
+    color: rgb(255, 255, 255); /* Set the color for headings */
+}
+
+p {
+    color: rgb(255, 255, 255); /* Set the color for paragraphs */
+    margin-bottom: 20px; /* Add some bottom margin */
+}
+
+.form-group {
+    max-width: 100%;
+    margin-bottom: 20px; /* Add some bottom margin to form groups */
+}
+
+label {
+    display: block; /* Make labels display as block elements */
+    margin-bottom: 5px; /* Add some bottom margin to labels */
+    color: #333; /* Set the color for labels */
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    width: 50%; /* Make input fields full width */
+    padding: 10px; /* Add some padding */
+    margin-bottom: 15px; /* Add some space between input fields */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Add some border radius */
+}
+
+button[type="submit"] {
+    width: 50%; /* Make the submit button full width */
+    padding: 10px; /* Add some padding */
+    border: none; /* Remove the default border */
+    background-color: #109141; /* Set the background color for the button */
+    color: #fff; /* Set the text color */
+    border-radius: 5px; /* Add some border radius */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+button[type="submit"]:hover {
+    background-color: #0a4b02; /* Change background color on hover */
 }
