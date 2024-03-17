@@ -742,71 +742,69 @@ display: block;
 }
 
 body.z {
-    background-color: #e0d4b8; /* Set the background color for the entire page */
+    background-color: #e0d4b8;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 30px;
-    height: 100vh; /* Set the height of the body to 100% of the viewport height */
+    height: 100vh;
 }
 
 .container {
     padding: 20px;
-    border-radius: 10px; /* Add some border radius to the container */
-    display: flex; /* Use flexbox to align items */
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center; /* Center contents vertically */
-    align-items: center; /* Center contents horizontally */
+    border-radius: 10px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-
 h1 {
-    color: white; /* Set the color for headings */
+    color: white;
 }
 
 p {
-    color: white; /* Set the color for paragraphs */
-    margin-bottom: 20px; /* Add some bottom margin */
+    color: white;
+    margin-bottom: 20px;
 }
 
 form{
-    /* background-color: green; */
     width:768px
 }
 .form-group {
-    margin-bottom: 20px; /* Add some bottom margin to form groups */
+    margin-bottom: 20px;
     width:100%
 }
 
 label {
-    display: block; /* Make labels display as block elements */
-    margin-bottom: 5px; /* Add some bottom margin to labels */
-    color: #333; /* Set the color for labels */
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
 }
 
 input[type="email"],
 input[type="text"],
 input[type="password"] {
-    width: 100%; /* Make input fields full width */
-    padding: 10px; /* Add some padding */
-    margin-bottom: 15px; /* Add some space between input fields */
-    border: 1px solid #ccc; /* Add a border */
-    border-radius: 5px; /* Add some border radius */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    width: 100%;
+    padding: 10px; 
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 button[type="submit"] {
-    width: 30%; /* Make the submit button full width */
-    padding: 10px; /* Add some padding */
-    border: none; /* Remove the default border */
-    background-color: #109141; /* Set the background color for the button */
-    color: #fff; /* Set the text color */
-    border-radius: 5px; /* Add some border radius */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    width: 30%;
+    padding: 10px;
+    border: none;
+    background-color: #109141;
+    color: #fff; 
+    border-radius: 5px;
+    cursor: pointer;
     display: block;
     margin:0 auto;
 }
 
 button[type="submit"]:hover {
-    background-color: #0a4b02; /* Change background color on hover */
+    background-color: #0a4b02;
 }
 
 body.cart{

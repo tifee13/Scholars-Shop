@@ -1,6 +1,6 @@
 from flask import Flask, render_template, session, redirect, url_for, request
 import sqlite3
-import os  # For joining file paths
+import os
 
 app = Flask(__name__)
 
@@ -11,20 +11,24 @@ STATIC_FOLDER = os.path.join(ROOT_DIR, 'static')
 
 
 def create_database():
+    """Create database tables and seed initial data."""
     conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
 
+    # Create users table
     c.execute('''CREATE TABLE IF NOT EXISTS users (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     username TEXT NOT NULL,
                     password TEXT NOT NULL
                  )''')
 
+    # Create categories table
     c.execute('''CREATE TABLE IF NOT EXISTS categories (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT NOT NULL
                  )''')
 
+    # Create products table
     c.execute('''CREATE TABLE IF NOT EXISTS products (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT NOT NULL,
@@ -42,7 +46,6 @@ def create_database():
         ('gadgets',),
         ('electronics',)
     ]
-
     c.executemany("INSERT INTO categories (name) VALUES (?)", categories)
 
     # Seed products data
@@ -54,7 +57,6 @@ def create_database():
         ('iPhone XR', "The iPhone XR: Experience brilliance with a stunning Liquid Retina display, advanced Face ID, and breakthrough camera system for capturing life's moments.", 'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 5),
         ('Rice and Soup', "Delight in the comforting simplicity of a steaming bowl of fragrant rice paired with a hearty, flavorful soup brimming with wholesome ingredients.", 'https://images.pexels.com/photos/4611425/pexels-photo-4611425.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 1)
     ]
-
     c.executemany("INSERT INTO products (name, description, image, category_id) VALUES (?, ?, ?, ?)", sample_products)
 
     conn.commit()
@@ -64,11 +66,13 @@ def create_database():
 @app.route('/')
 @app.route('/home')
 def home():
+    """Render the home page."""
     return render_template('index.html')
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    """Register new users."""
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -76,7 +80,6 @@ def register():
 
         if not email.endswith('@kibo.school'):
             return render_template('register.html', error="Only email addresses ending with '@kibo.school' are allowed to register.")
-
 
         conn = sqlite3.connect(DATABASE_PATH)
         c = conn.cursor()
@@ -99,6 +102,7 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """Log in existing users."""
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -118,18 +122,23 @@ def login():
 
     return render_template('login.html')
 
+
 @app.route('/logout')
 def logout():
+    """Log out users."""
     session.pop('username', None)
     return redirect(url_for('home'))
 
+
 @app.route('/dashboard')
 def dashboard():
+    """Render the dashboard."""
     return render_template('dashboard.html')
 
 
 @app.route('/add_to_cart/<int:product_id>')
 def add_to_cart(product_id):
+    """Add a product to the shopping cart."""
     conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
 
@@ -149,14 +158,15 @@ def add_to_cart(product_id):
 
 @app.route('/cart')
 def cart():
+    """Render the shopping cart."""
     cart = session.get('cart', [])
     total_price = sum(item['price'] for item in cart)
     return render_template('cart.html', cart=cart, total_price=total_price)
 
 
-
 @app.route('/product/<category>')
 def show_product(category):
+    """Render products based on category."""
     conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     c.execute("SELECT * FROM products p JOIN categories c ON p.category_id = c.id WHERE c.name =?", (category,))
@@ -181,12 +191,12 @@ def show_product(category):
         menu_links = ["Television", "Air-conditioners", "Refrigerator", "Fans"]
         banner_img = "main_electronics.png"
 
-    return render_template("products.html", products=items, category=category, menu_links=menu_links,
-                           banner_img=banner_img)
+    return render_template("products.html", products=items, category=category, menu_links=menu_links, banner_img=banner_img)
 
 
 @app.route('/products/<category_id>')
 def show_products(category_id):
+    """Render products based on category ID."""
     category_id = int(category_id)
 
     conn = sqlite3.connect(DATABASE_PATH)

@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to external CSS file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Title of the page -->
     <title>Shopping Cart</title>
 </head>
 <body class="cart">
+    <!-- Heading of the page -->
     <h1>Your Shopping Cart</h1>
     <div>
+        <!-- Cart items list -->
         <div class="list-heading">
+            <!-- Table headings -->
             <p>Product</p>
             <p>Quantity</p>
             <p>Price</p>
@@ -17,18 +23,26 @@
             <p>Action</p>
         </div>
         <div class="list-items">
+            <!-- Loop through each item in the cart -->
             {% for item in session['cart'] %}
             <div class="list-item">
-                <p>a {{ item.name }}</p>
-                <p>b {{ item.quantity }}</p>
+                <!-- Display product name -->
+                <p>{{ item.name }}</p>
+                <!-- Display quantity -->
+                <p>{{ item.quantity }}</p>
+                <!-- Display price per unit -->
                 <p>{{ item.price }}</p>
+                <!-- Calculate and display subtotal for the item -->
                 <p>{{ item.quantity * item.price }}</p>
+                <!-- Link to remove the item from the cart -->
                 <p><a href="/remove_from_cart/{{ loop.index }}">Remove</a></p>
             </div>
             {% endfor %}
         </div>
     </div>
-    <p class="total">Total: 657{{ total }}</p>
+    <!-- Display total price of all items in the cart -->
+    <p class="total">Total: $657{{ total }}</p>
+    <!-- Link to proceed to checkout -->
     <a href="/checkout">Proceed to Checkout</a>
 </body>
 </html>

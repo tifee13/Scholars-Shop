@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <!-- Link to external CSS file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <!-- Header section -->
     <header class="banner">
         <div class="inner-banner">
+            <!-- Website title -->
             <h1 class="header">Welcome to Scholars Shop</h1>
+            <!-- Navigation links -->
             <div class="links">
                 <a href="/logout"><i class="fa-regular fa-user"></i>Logout</a>
                 <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
@@ -21,24 +25,29 @@
     <div class="mainBody">
         <!-- Hero Section -->
         <section class="hero-section">
+            <!-- Hero image and description -->
             <img src="https://images.pexels.com/photos/2679323/pexels-photo-2679323.jpeg" alt="commerce">
             <div class="overlay"></div>
             <div class="hero-description">
                 <h1 class="header-text"> Welcome to Your Dashboard</h1>
                 <p>Congratulations! You are now logged in and ready to explore.</p>
-                <!-- You can add more content or features specific to the dashboard here -->
             </div>
         </section>
 
         <!-- Categories Section -->
         <section class="categories">
+            <!-- Section title and tagline -->
             <h3 class="sub-header">Categories</h3>
             <p class="section-tagline"><em>Browse top categories in our store today</em></p>
+            <!-- Container for category cards -->
             <div class="category-container">
+                <!-- Individual category cards -->
                 <div class="category-card">
+                    <!-- Category image -->
                     <div class="category-image">
                         <img src="https://images.pexels.com/photos/135620/pexels-photo-135620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="fashion">
                     </div>
+                    <!-- Category button -->
                     <a class="category-btn" href="/product/fashion">Fashion</a>
                 </div>
                 <div class="category-card">
@@ -56,20 +65,19 @@
             </div>
         </section>
 
-        <!-- Additional Sections or Features -->
-        <!-- You can add more sections or features as needed -->
     </div>
 
+    <!-- Script for hamburger menu -->
     <script src="script.js"></script>
     <script>
         var hamburger = document.getElementsByClassName("hamburger")[0];
         var mobileNav = document.getElementsByClassName("mobile-nav")[0];
 
+        // Function to toggle mobile navigation menu
         function toggleBar() {
             mobileNav.classList.toggle("active");
         }
 
     </script>
 </body>
-
 </html>

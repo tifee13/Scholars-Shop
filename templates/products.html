@@ -4,30 +4,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="/scholars_shop/static/css/style.css"> -->
+  <!-- Link to external CSS file -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- Link to Google Fonts -->
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <!-- for favicon -->
-  <!-- <link rel="shortcut icon" type="image/png" href="sampleImage.jpg"> -->
-
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" >
+  <!-- Font Awesome icons -->
   <script src="https://kit.fontawesome.com/ddebf545f0.js" crossorigin="anonymous"></script>
-
   <title>Scholars Shop Food</title>
 </head>
 
 <body>
+  <!-- Goal section -->
   <div class="goal">
     <p>Connecting students with sellers for a seamless trading experience...</p>
   </div>
+  <!-- Header section -->
   <header class="banner">
     <div class="inner-banner">
-      <!-- <div class="logo">
-          <img src="{{ url_for('static', filename='images/logo.png') }}" width="400px" alt="Scholars Shop Logo">
-        </div> -->
+      <!-- Hamburger menu for mobile view -->
       <div class="hamburger" onclick="toggleBar()"><i class="fa-solid fa-bars"></i></div>
       <div class="topBar">
+        <!-- Header title -->
         <h1 class="header">{{ category }}</h1>
+        <!-- Navigation links -->
         <div class="links">
           <a href="/login"><i class="fa-regular fa-user"></i>
             <p>Account</p>
@@ -41,6 +41,7 @@
         </div>
       </div>
     </div>
+    <!-- Sidebar navigation -->
     <div class="sideBar">
       <a href="/" class="nav-item">
         <i class="fa-solid fa-house"></i> Home
@@ -60,9 +61,9 @@
       <a href="/product/electronics" class="nav-item">
         <i class="fa-solid fa-plug"></i> Electronics
       </a>
-  </div>
+    </div>
   </header>
-  <!-- MObile sidebar -->
+  <!-- Mobile sidebar -->
   <nav class="mobile-nav">
       <ul>
         <li><a href="/" class="nav-item">
@@ -85,7 +86,9 @@
         </a></li>
       </ul>
   </nav>
+  <!-- Main body section -->
   <div class="mainBody">
+    <!-- Mobile navigation options -->
     <div class="mobileOptions">
       <a href="/login"><i class="fa-regular fa-user"></i>
         <p>Account</p>
@@ -97,38 +100,43 @@
         <p>Inbox</p>
       </a>
     </div>
+    <!-- Main products section -->
     <div class="main_products">
+      <!-- Banner image -->
       <img src="{{ url_for('static', filename='images/' + banner_img) }}" width="50%" alt="{{ category }}">
     </div>
+    <!-- Products title -->
     <p class="products-title tagline">{{ category }} products</p>
+    <!-- Product cards -->
     <div class="product-cards">
       {% for product in products %}
       <div class="card">
+        <!-- Product image -->
         <div class="card-image"><img src="{{product[3]}}" alt="{{product[2]}}"></div>
+        <!-- Product name -->
         <p class="p-name">{{product[1]}}</p>
+        <!-- Product description -->
         <p class="p-description">{{product[2]}}</p>
+        <!-- Add to cart button -->
         <button  class="cart-btn" type="button">Add to cart</button>
       </div>
       {% endfor %}
     </div>
   </div>
+  <!-- Script for mobile navigation toggle -->
   <script type="script" src="{{ url_for('static', filename='script.js')}}"></script>
   <script>
             var hamburger = document.getElementsByClassName("hamburger")[0]
             var mobileNav = document.getElementsByClassName("mobile-nav")[0]
 
             function toggleBar() {
-                // hamburger.addEventListener("click", () =>{
-                //   console.log("click")
-                //   mobileNav.classList.toggle("active")
-                // })
                 mobileNav.classList.toggle("active")
             }
-            
 
+            // Add to cart button functionality
             const cartBtn = document.getElementsByClassName("cart-btn")
             for (const btn of cartBtn){
-// btn.addEventListener('click',)       
+    
             }
   </script>
 </body>

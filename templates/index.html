@@ -1,175 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/scholars_shop/static/css/style.css"> -->
+
+    <!-- Link to external CSS files -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <!-- for favicon -->
-    <!-- <link rel="shortcut icon" type="image/png" href="sampleImage.jpg"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" >
 
-    <script
-      src="https://kit.fontawesome.com/ddebf545f0.js"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Font Awesome script -->
+    <script src="https://kit.fontawesome.com/ddebf545f0.js" crossorigin="anonymous"></script>
+
     <title>Scholars Shop</title>
-  </head>
-  <body>
+</head>
+<body>
+    <!-- Goal section -->
     <div class="goal">
-      <p>Connecting students with sellers for a seamless trading experience...</p>
+        <p>Connecting students with sellers for a seamless trading experience...</p>
     </div>
+
+    <!-- Header section -->
     <header class="banner">
-      <div class="inner-banner">
-        <!-- <div class="logo">
-          <img src="{{ url_for('static', filename='images/logo.png') }}" width="400px" alt="Scholars Shop Logo">
-        </div> -->
-        <div class="hamburger" onclick="toggleBar()"><i class="fa-solid fa-bars"></i></div>
-        <div class="topBar">
-          <h1 class="header">Scholars Shop</h1>
-          <div class="links">
-            <a href="/login"><i class="fa-regular fa-user"></i>Account</a>
-            <a href="/cart"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
-            <a href="/inbox"><i class="fa-regular fa-envelope"></i>Inbox</a>
-          </div>
+        <div class="inner-banner">
+            <!-- Hamburger menu for mobile -->
+            <div class="hamburger" onclick="toggleBar()"><i class="fa-solid fa-bars"></i></div>
+            <div class="topBar">
+                <!-- Website title -->
+                <h1 class="header">Scholars Shop</h1>
+                <!-- Navigation links -->
+                <div class="links">
+                    <a href="/login"><i class="fa-regular fa-user"></i>Account</a>
+                    <a href="/cart"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
+                    <a href="/inbox"><i class="fa-regular fa-envelope"></i>Inbox</a>
+                </div>
+            </div>
         </div>
-      </div>
 
+        <!-- Sidebar navigation -->
         <div class="sideBar">
-          <a href="/" class="nav-item">
-            <i class="fa-solid fa-house"></i> Home
-          </a>
-          <a href="/product/food" class="nav-item">
-            <i class="fa-solid fa-utensils"></i> Food
-          </a>
-          <a href="/product/fashion" class="nav-item">
-            <i class="fa-solid fa-shirt"></i> Fashion
-          </a>
-          <a href="/product/books" class="nav-item">
-            <i class="fa-solid fa-book"></i> Books
-          </a>
-          <a href="/product/gadgets" class="nav-item">
-            <i class="fa-solid fa-mobile-screen-button"></i> Gadgets
-          </a>
-          <a href="/product/electronics" class="nav-item">
-            <i class="fa-solid fa-plug"></i> Electronics
-          </a>
-      </div>
+            <a href="/" class="nav-item"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="/product/food" class="nav-item"><i class="fa-solid fa-utensils"></i> Food</a>
+            <a href="/product/fashion" class="nav-item"><i class="fa-solid fa-shirt"></i> Fashion</a>
+            <a href="/product/books" class="nav-item"><i class="fa-solid fa-book"></i> Books</a>
+            <a href="/product/gadgets" class="nav-item"><i class="fa-solid fa-mobile-screen-button"></i> Gadgets</a>
+            <a href="/product/electronics" class="nav-item"><i class="fa-solid fa-plug"></i> Electronics</a>
+        </div>
     </header>
-    <!-- MObile sidebar -->
-  <nav class="mobile-nav">
-    <ul>
-      <li><a href="/" class="nav-item">
-        <i class="fa-solid fa-house"></i> <p>Home</p>
-      </a></li>
-      <li><a href="/product/food" class="nav-item">
-        <i class="fa-solid fa-utensils"></i><p>Food</p>
-      </a></li>
-      <li><a href="/product/fashion" class="nav-item">
-        <i class="fa-solid fa-shirt"></i> <p>Fashion</p>
-      </a></li>
-      <li><a href="/product/books" class="nav-item">
-        <i class="fa-solid fa-book"></i> <p>Books</p>
-      </a></li>
-      <li><a href="/product/gadgets" class="nav-item">
-        <i class="fa-solid fa-mobile-screen-button"></i> <p>Gadgets</p>
-      </a></li>
-      <li><a href="/product/electronics" class="nav-item">
-        <i class="fa-solid fa-plug"></i> <p>Electronics</p>
-      </a></li>
-    </ul>
-</nav>
+
+    <!-- Mobile sidebar -->
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="/" class="nav-item"><i class="fa-solid fa-house"></i> <p>Home</p></a></li>
+            <li><a href="/product/food" class="nav-item"><i class="fa-solid fa-utensils"></i><p>Food</p></a></li>
+            <li><a href="/product/fashion" class="nav-item"><i class="fa-solid fa-shirt"></i> <p>Fashion</p></a></li>
+            <li><a href="/product/books" class="nav-item"><i class="fa-solid fa-book"></i> <p>Books</p></a></li>
+            <li><a href="/product/gadgets" class="nav-item"><i class="fa-solid fa-mobile-screen-button"></i> <p>Gadgets</p></a></li>
+            <li><a href="/product/electronics" class="nav-item"><i class="fa-solid fa-plug"></i> <p>Electronics</p></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main body content -->
     <div class="mainBody">
-      <div class="mobileOptions">
-        <a href="/login"><i class="fa-regular fa-user"></i>
-          <p>Account</p>
-        </a>
-        <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>
-          <p>Cart</p>
-        </a>
-        <a href="inbox.html"><i class="fa-regular fa-envelope"></i>
-          <p>Inbox</p>
-        </a>
-      </div>
-
-      <!-- Hero Section -->
-      <section class="hero-section">
-        <img src="https://images.pexels.com/photos/2679323/pexels-photo-2679323.jpeg" alt="commerce">
-        <div class="overlay"></div>
-        <div class="hero-description">
-          <h1 class="header-text"> Buy and Sell <br> Stuff on Campus</h1>
-          <a class="hero-btn" href="/login">Login</a>
-          <a class="hero-btn" href="/register">Register</a>
+        <div class="mobileOptions">
+            <!-- Mobile options for account, cart, and inbox -->
+            <a href="/login"><i class="fa-regular fa-user"></i> <p>Account</p></a>
+            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> <p>Cart</p></a>
+            <a href="inbox.html"><i class="fa-regular fa-envelope"></i> <p>Inbox</p></a>
         </div>
-      </section>
 
-      <!-- Categories Section -->
-      <section class="categories">
-        <h3 class="sub-header">Categories</h3>
-        <p class="section-tagline"><em>Browse top categories in our store today</em></p>
-        <div class="category-container">
-          <div class="category-card">
-            <div class="category-image">
-              <img src="https://images.pexels.com/photos/135620/pexels-photo-135620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="fashion">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <!-- Hero image and description -->
+            <img src="https://images.pexels.com/photos/2679323/pexels-photo-2679323.jpeg" alt="commerce">
+            <div class="overlay"></div>
+            <div class="hero-description">
+                <h1 class="header-text"> Buy and Sell <br> Stuff on Campus</h1>
+                <!-- Buttons for login and register -->
+                <a class="hero-btn" href="/login">Login</a>
+                <a class="hero-btn" href="/register">Register</a>
             </div>
-            <a class="category-btn" href="/product/fashion">Fashion</a>
-          </div>
-          <div class="category-card">
-            <div class="category-image">
-              <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="fashion">
-            </div>
-            <a class="category-btn" href="/product/food">Food</a>
-          </div>
-          <div class="category-card">
-            <div class="category-image">
-              <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="fashion">
-            </div>
-            <a class="category-btn" href="/product/books">Books</a>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Why choose Us -->
-      <section class="benefits">
-        <h3 class="sub-header">Why choose us</h3>
-        <p class="section-tagline"><em>Enjoy premium benefits when you use our store</em></p>
-        <div class="benefits-con">
-          <div class="benefit-container">
-            <div class="icon-container"><i class="fa-solid fa-lock"></i></div>
-            <div class="benefit-description">
-              <h4 class="benefit-header">In-campus trade security</h4>
-              <p>LRest assured knowing that your transactions within our store are protected with advanced security measures. We prioritize the safety and privacy of all our customers, providing you with peace of mind as you shop for your favorite items on campus.</p>
+        <!-- Categories Section -->
+        <section class="categories">
+            <!-- Section title and tagline -->
+            <h3 class="sub-header">Categories</h3>
+            <p class="section-tagline"><em>Browse top categories in our store today</em></p>
+            <!-- Container for category cards -->
+            <div class="category-container">
+                <!-- Individual category cards -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.pexels.com/photos/135620/pexels-photo-135620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="fashion">
+                    </div>
+                    <a class="category-btn" href="/product/fashion">Fashion</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="fashion">
+                    </div>
+                    <a class="category-btn" href="/product/food">Food</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="fashion">
+                    </div>
+                    <a class="category-btn" href="/product/books">Books</a>
+                </div>
             </div>
-          </div>
-          <div class="benefit-container">
-            <div class="icon-container"><i class="fa-solid fa-globe"></i></div>
-            <div class="benefit-description">
-              <h4 class="benefit-header">Large ecosystem</h4>
-              <p>Explore a diverse and extensive range of products and services within our store. From essential supplies to trendy accessories, we offer a wide selection to cater to your needs and preferences. With our large ecosystem, you'll find everything you're looking for conveniently in one place.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Call to action -->
-      <section class="cta">
-        <h1 class="call-to-action-header">Start shopping for stuff in Campus</h1>
-        <a class="cta-button" href="/register">Get Started</a>
-      </section>
+        <!-- Why choose Us -->
+        <section class="benefits">
+            <!-- Section title and tagline -->
+            <h3 class="sub-header">Why choose us</h3>
+            <p class="section-tagline"><em>Enjoy premium benefits when you use our store</em></p>
+            <!-- Container for benefits description -->
+            <div class="benefits-con">
+                <!-- Individual benefit containers -->
+                <div class="benefit-container">
+                    <!-- Benefit icon -->
+                    <div class="icon-container"><i class="fa-solid fa-lock"></i></div>
+                    <!-- Benefit description -->
+                    <div class="benefit-description">
+                        <h4 class="benefit-header">In-campus trade security</h4>
+                        <p>Rest assured knowing that your transactions within our store are protected with advanced security measures. We prioritize the safety and privacy of all our customers, providing you with peace of mind as you shop for your favorite items on campus.</p>
+                    </div>
+                </div>
+                <div class="benefit-container">
+                    <div class="icon-container"><i class="fa-solid fa-globe"></i></div>
+                    <div class="benefit-description">
+                        <h4 class="benefit-header">Large ecosystem</h4>
+                        <p>Explore a diverse and extensive range of products and services within our store. From essential supplies to trendy accessories, we offer a wide selection to cater to your needs and preferences. With our large ecosystem, you'll find everything you're looking for conveniently in one place.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to action -->
+        <section class="cta">
+            <!-- Call to action title and button -->
+            <h1 class="call-to-action-header">Start shopping for stuff in Campus</h1>
+            <a class="cta-button" href="/register">Get Started</a>
+        </section>
     </div>
-  <script src="script.js"></script>
-  <script>
-    var hamburger = document.getElementsByClassName("hamburger")[0]
-    var mobileNav = document.getElementsByClassName("mobile-nav")[0]
 
-    function toggleBar() {
-        // hamburger.addEventListener("click", () =>{
-        //   console.log("click")
-        //   mobileNav.classList.toggle("active")
-        // })
-        mobileNav.classList.toggle("active")
-    }
-    
-</script>
-  </body>
+    <!-- Script for hamburger menu -->
+    <script src="script.js"></script>
+    <script>
+        var hamburger = document.getElementsByClassName("hamburger")[0]
+        var mobileNav = document.getElementsByClassName("mobile-nav")[0]
+
+        // Function to toggle mobile navigation menu
+        function toggleBar() {
+            mobileNav.classList.toggle("active")
+        }
+    </script>
+</body>
 </html>
