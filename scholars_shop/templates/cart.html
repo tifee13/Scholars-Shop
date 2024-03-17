@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Shopping Cart</title>
+</head>
+<body class="cart">
+    <h1>Your Shopping Cart</h1>
+    <div>
+        <div class="list-heading">
+            <p>Product</p>
+            <p>Quantity</p>
+            <p>Price</p>
+            <p>Subtotal</p>
+            <p>Action</p>
+        </div>
+        <div class="list-items">
+            {% for item in session['cart'] %}
+            <div class="list-item">
+                <p>a {{ item.name }}</p>
+                <p>b {{ item.quantity }}</p>
+                <p>{{ item.price }}</p>
+                <p>{{ item.quantity * item.price }}</p>
+                <p><a href="/remove_from_cart/{{ loop.index }}">Remove</a></p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <p class="total">Total: 657{{ total }}</p>
+    <a href="/checkout">Proceed to Checkout</a>
+</body>
+</html>

@@ -741,7 +741,6 @@ display: block;
     }
 }
 
-User
 body.z {
     background-color: #e0d4b8; /* Set the background color for the entire page */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -750,7 +749,6 @@ body.z {
 }
 
 .container {
-    background-color: rgba(255, 255, 255, 0.9); /* Add a semi-transparent background color to the container */
     padding: 20px;
     border-radius: 10px; /* Add some border radius to the container */
     display: flex; /* Use flexbox to align items */
@@ -761,16 +759,21 @@ body.z {
 
 
 h1 {
-    color: rgb(0, 0, 0); /* Set the color for headings */
+    color: white; /* Set the color for headings */
 }
 
 p {
-    color: rgb(0, 0, 0); /* Set the color for paragraphs */
+    color: white; /* Set the color for paragraphs */
     margin-bottom: 20px; /* Add some bottom margin */
 }
 
+form{
+    /* background-color: green; */
+    width:768px
+}
 .form-group {
     margin-bottom: 20px; /* Add some bottom margin to form groups */
+    width:100%
 }
 
 label {
@@ -791,15 +794,44 @@ input[type="password"] {
 }
 
 button[type="submit"] {
-    width: 100%; /* Make the submit button full width */
+    width: 30%; /* Make the submit button full width */
     padding: 10px; /* Add some padding */
     border: none; /* Remove the default border */
     background-color: #109141; /* Set the background color for the button */
     color: #fff; /* Set the text color */
     border-radius: 5px; /* Add some border radius */
     cursor: pointer; /* Change cursor to pointer on hover */
+    display: block;
+    margin:0 auto;
 }
 
 button[type="submit"]:hover {
     background-color: #0a4b02; /* Change background color on hover */
+}
+
+body.cart{
+    width:80%;
+    background-color: grey;
+    padding: 10em;
+}
+
+.list-heading{
+    color:yellow;
+    display: flex;
+}
+.list-heading p{
+    margin: 30px;
+}
+
+.list-items{
+    display: flex;
+}
+
+.list-item p{
+    margin: 30px;
+   
+}
+.total{
+    display: flex;
+    justify-content: flex-end;
 }

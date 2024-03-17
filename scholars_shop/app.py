@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, session, redirect, url_for, request
 import sqlite3
 import os  # For joining file paths
 
@@ -72,6 +72,12 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        email = request.form['email']
+
+        if not email.endswith('@kibo.school'):
+            return render_template('register.html', error="Only email addresses ending with '@kibo.school' are allowed to register.")
+
+
         conn = sqlite3.connect(DATABASE_PATH)
         c = conn.cursor()
 
@@ -112,9 +118,41 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('home'))
+
 @app.route('/dashboard')
 def dashboard():
     return render_template('dashboard.html')
+
+
+@app.route('/add_to_cart/<int:product_id>')
+def add_to_cart(product_id):
+    conn = sqlite3.connect(DATABASE_PATH)
+    c = conn.cursor()
+
+    c.execute("SELECT * FROM products WHERE id=?", (product_id,))
+    product = c.fetchone()
+
+    conn.close()
+
+    if product:
+        if 'cart' not in session:
+            session['cart'] = []
+        session['cart'].append({'id': product[0], 'name': product[1], 'description': product[2], 'image': product[3], 'price': product[5]})
+        return redirect(url_for('home'))
+    else:
+        return 'Product not found'
+
+
+@app.route('/cart')
+def cart():
+    cart = session.get('cart', [])
+    total_price = sum(item['price'] for item in cart)
+    return render_template('cart.html', cart=cart, total_price=total_price)
+
 
 
 @app.route('/product/<category>')
