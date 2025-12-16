@@ -68,10 +68,3 @@ Scholars Shop aims to evolve into a comprehensive platform with additional featu
 - **Notfication System**
 - **Secured Transactions/Payment options**
 
-# Contributing
-----------   Contributions are welcome! Please fork the repository, make your changes, and submit a pull request for review.
-
-# License
-----------   This project is licensed under the MIT License - see the LICENSE file for details.
-
-This project is hosted on [Render.com](https://scholars-shop.onrender.com/) and contributions are welcome!
