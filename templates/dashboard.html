@@ -6,31 +6,74 @@
     <title>Dashboard</title>
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Font Awesome script -->
+    <script src="https://kit.fontawesome.com/ddebf545f0.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- Goal section -->
+    <div class="goal">
+        <p>Connecting students with sellers for a seamless trading experience...</p>
+    </div>
+
     <!-- Header section -->
     <header class="banner">
         <div class="inner-banner">
-            <!-- Website title -->
-            <h1 class="header">Welcome to Scholars Shop</h1>
-            <!-- Navigation links -->
-            <div class="links">
-                <a href="/logout"><i class="fa-regular fa-user"></i>Logout</a>
-                <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a>
-                <a href="inbox.html"><i class="fa-regular fa-envelope"></i>Inbox</a>
+            <!-- Hamburger menu for mobile -->
+            <div class="hamburger" onclick="toggleBar()"><i class="fa-solid fa-bars"></i></div>
+            <div class="topBar">
+                <!-- Website title -->
+                <h1 class="header">Scholars Shop</h1>
+                <!-- Navigation links -->
+                <div class="links">
+                    <a href="/dashboard"><i class="fa-regular fa-user"></i>{{ current_user }}</a>
+                    <a href="/cart"><i class="fa-solid fa-cart-shopping"></i>Cart ({{ get_cart_count() }})</a>
+                    <a href="/inbox"><i class="fa-regular fa-envelope"></i>Inbox</a>
+                    <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                </div>
             </div>
+        </div>
+
+        <!-- Sidebar navigation -->
+        <div class="sideBar">
+            <a href="/" class="nav-item"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="/product/food" class="nav-item"><i class="fa-solid fa-utensils"></i> Food</a>
+            <a href="/product/fashion" class="nav-item"><i class="fa-solid fa-shirt"></i> Fashion</a>
+            <a href="/product/books" class="nav-item"><i class="fa-solid fa-book"></i> Books</a>
+            <a href="/product/gadgets" class="nav-item"><i class="fa-solid fa-mobile-screen-button"></i> Gadgets</a>
+            <a href="/product/electronics" class="nav-item"><i class="fa-solid fa-plug"></i> Electronics</a>
         </div>
     </header>
 
+    <!-- Mobile sidebar -->
+    <div class="nav-overlay" onclick="closeNav()"></div>
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="/" class="nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+            <li><a href="/product/food" class="nav-item"><i class="fa-solid fa-utensils"></i><span>Food</span></a></li>
+            <li><a href="/product/fashion" class="nav-item"><i class="fa-solid fa-shirt"></i><span>Fashion</span></a></li>
+            <li><a href="/product/books" class="nav-item"><i class="fa-solid fa-book"></i><span>Books</span></a></li>
+            <li><a href="/product/gadgets" class="nav-item"><i class="fa-solid fa-mobile-screen-button"></i><span>Gadgets</span></a></li>
+            <li><a href="/product/electronics" class="nav-item"><i class="fa-solid fa-plug"></i><span>Electronics</span></a></li>
+        </ul>
+    </nav>
+
     <div class="mainBody">
+        <!-- Mobile options -->
+        <div class="mobileOptions">
+            <a href="/dashboard"><i class="fa-regular fa-user"></i><span>{{ current_user }}</span></a>
+            <a href="/cart"><i class="fa-solid fa-cart-shopping"></i><span>Cart</span></a>
+            <a href="/inbox"><i class="fa-regular fa-envelope"></i><span>Inbox</span></a>
+        </div>
+
         <!-- Hero Section -->
         <section class="hero-section">
             <!-- Hero image and description -->
             <img src="https://images.pexels.com/photos/2679323/pexels-photo-2679323.jpeg" alt="commerce">
             <div class="overlay"></div>
             <div class="hero-description">
-                <h1 class="header-text"> Welcome to Your Dashboard</h1>
-                <p>Congratulations! You are now logged in and ready to explore.</p>
+                <h1 class="header-text">Welcome, {{ current_user }}!</h1>
+                <p style="color: white; margin-bottom: 1rem;">You are now logged in and ready to explore.</p>
+                <a class="hero-btn" href="/product/food">Start Shopping</a>
             </div>
         </section>
 
@@ -68,16 +111,19 @@
     </div>
 
     <!-- Script for hamburger menu -->
-    <script src="script.js"></script>
     <script>
-        var hamburger = document.getElementsByClassName("hamburger")[0];
         var mobileNav = document.getElementsByClassName("mobile-nav")[0];
+        var navOverlay = document.getElementsByClassName("nav-overlay")[0];
 
-        // Function to toggle mobile navigation menu
         function toggleBar() {
             mobileNav.classList.toggle("active");
+            navOverlay.classList.toggle("active");
         }
 
+        function closeNav() {
+            mobileNav.classList.remove("active");
+            navOverlay.classList.remove("active");
+        }
     </script>
 </body>
 </html>

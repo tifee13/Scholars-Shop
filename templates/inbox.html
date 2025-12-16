@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://kit.fontawesome.com/ddebf545f0.js" crossorigin="anonymous"></script>
+    <title>Inbox - Scholars Shop</title>
+</head>
+<body>
+    <div class="goal">
+        <p>Connecting students with sellers for a seamless trading experience...</p>
+    </div>
+
+    <header class="banner">
+        <div class="inner-banner">
+            <div class="hamburger" onclick="toggleBar()"><i class="fa-solid fa-bars"></i></div>
+            <div class="topBar">
+                <h1 class="header">Inbox</h1>
+                <div class="links">
+                    <a href="/dashboard"><i class="fa-regular fa-user"></i>{{ current_user }}</a>
+                    <a href="/cart"><i class="fa-solid fa-cart-shopping"></i>Cart ({{ get_cart_count() }})</a>
+                    <a href="/inbox"><i class="fa-regular fa-envelope"></i>Inbox</a>
+                    <a href="/"><i class="fa-solid fa-house"></i>Home</a>
+                    <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav-overlay" onclick="closeNav()"></div>
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="/" class="nav-item"><i class="fa-solid fa-house"></i> <span>Home</span></a></li>
+            <li><a href="/product/food" class="nav-item"><i class="fa-solid fa-utensils"></i><span>Food</span></a></li>
+            <li><a href="/product/fashion" class="nav-item"><i class="fa-solid fa-shirt"></i> <span>Fashion</span></a></li>
+            <li><a href="/product/books" class="nav-item"><i class="fa-solid fa-book"></i> <span>Books</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="mainBody">
+        <div class="mobileOptions">
+            <a href="/dashboard"><i class="fa-regular fa-user"></i><span>{{ current_user }}</span></a>
+            <a href="/cart"><i class="fa-solid fa-cart-shopping"></i><span>Cart</span></a>
+            <a href="/"><i class="fa-solid fa-house"></i><span>Home</span></a>
+        </div>
+
+        <div class="inbox-container">
+            <h2 class="inbox-title">Your Messages</h2>
+            <div class="empty-inbox">
+                <i class="fa-regular fa-envelope empty-inbox-icon"></i>
+                <h3>No messages yet</h3>
+                <p>When sellers respond to your inquiries, they will appear here.</p>
+                <a href="/" class="continue-shopping-btn">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var mobileNav = document.getElementsByClassName("mobile-nav")[0];
+        var navOverlay = document.getElementsByClassName("nav-overlay")[0];
+
+        function toggleBar() {
+            mobileNav.classList.toggle("active");
+            navOverlay.classList.toggle("active");
+        }
+
+        function closeNav() {
+            mobileNav.classList.remove("active");
+            navOverlay.classList.remove("active");
+        }
+    </script>
+</body>
+</html>

@@ -1,48 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Link to external CSS file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <!-- Title of the page -->
-    <title>Shopping Cart</title>
+    <script src="https://kit.fontawesome.com/ddebf545f0.js" crossorigin="anonymous"></script>
+    <title>Shopping Cart - Scholars Shop</title>
 </head>
-<body class="cart">
-    <!-- Heading of the page -->
-    <h1>Your Shopping Cart</h1>
-    <div>
-        <!-- Cart items list -->
-        <div class="list-heading">
-            <!-- Table headings -->
-            <p>Product</p>
-            <p>Quantity</p>
-            <p>Price</p>
-            <p>Subtotal</p>
-            <p>Action</p>
-        </div>
-        <div class="list-items">
-            <!-- Loop through each item in the cart -->
-            {% for item in session['cart'] %}
-            <div class="list-item">
-                <!-- Display product name -->
-                <p>{{ item.name }}</p>
-                <!-- Display quantity -->
-                <p>{{ item.quantity }}</p>
-                <!-- Display price per unit -->
-                <p>{{ item.price }}</p>
-                <!-- Calculate and display subtotal for the item -->
-                <p>{{ item.quantity * item.price }}</p>
-                <!-- Link to remove the item from the cart -->
-                <p><a href="/remove_from_cart/{{ loop.index }}">Remove</a></p>
+<body>
+    <div class="goal">
+        <p>Connecting students with sellers for a seamless trading experience...</p>
+    </div>
+
+    <header class="banner">
+        <div class="inner-banner">
+            <div class="hamburger" onclick="toggleBar()"><i class="fa-solid fa-bars"></i></div>
+            <div class="topBar">
+                <h1 class="header">Shopping Cart</h1>
+                <div class="links">
+                    {% if logged_in %}
+                        <a href="/dashboard"><i class="fa-regular fa-user"></i>{{ current_user }}</a>
+                        <a href="/cart"><i class="fa-solid fa-cart-shopping"></i>Cart ({{ get_cart_count() }})</a>
+                        <a href="/"><i class="fa-solid fa-house"></i>Home</a>
+                        <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                    {% else %}
+                        <a href="/login"><i class="fa-regular fa-user"></i>Login</a>
+                        <a href="/"><i class="fa-solid fa-house"></i>Home</a>
+                    {% endif %}
+                </div>
             </div>
-            {% endfor %}
+        </div>
+    </header>
+
+    <div class="nav-overlay" onclick="closeNav()"></div>
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="/" class="nav-item"><i class="fa-solid fa-house"></i> <span>Home</span></a></li>
+            <li><a href="/product/food" class="nav-item"><i class="fa-solid fa-utensils"></i><span>Food</span></a></li>
+            <li><a href="/product/fashion" class="nav-item"><i class="fa-solid fa-shirt"></i> <span>Fashion</span></a></li>
+            <li><a href="/product/books" class="nav-item"><i class="fa-solid fa-book"></i> <span>Books</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="mainBody">
+        <div class="mobileOptions">
+            {% if logged_in %}
+                <a href="/dashboard"><i class="fa-regular fa-user"></i><span>{{ current_user }}</span></a>
+                <a href="/cart"><i class="fa-solid fa-cart-shopping"></i><span>Cart</span></a>
+                <a href="/"><i class="fa-solid fa-house"></i><span>Home</span></a>
+            {% else %}
+                <a href="/login"><i class="fa-regular fa-user"></i><span>Login</span></a>
+                <a href="/"><i class="fa-solid fa-house"></i><span>Home</span></a>
+            {% endif %}
+        </div>
+
+        <div class="cart-container">
+            <h2 class="cart-title">Your Shopping Cart</h2>
+
+            {% if cart %}
+            <div class="cart-items">
+                {% for item in cart %}
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="{{ item.image }}" alt="{{ item.name }}">
+                    </div>
+                    <div class="cart-item-details">
+                        <h3>{{ item.name }}</h3>
+                        <p class="cart-item-price">${{ item.price }}</p>
+                        <p class="cart-item-qty">Quantity: {{ item.quantity }}</p>
+                    </div>
+                    <div class="cart-item-actions">
+                        <a href="/remove_from_cart/{{ loop.index }}" class="remove-btn">Remove</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="cart-summary">
+                <h3>Order Summary</h3>
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="total-amount">${{ total_price }}</span>
+                </div>
+                <a href="/checkout" class="checkout-btn">Proceed to Checkout</a>
+            </div>
+            {% else %}
+            <div class="empty-cart">
+                <i class="fa-solid fa-cart-shopping empty-cart-icon"></i>
+                <h3>Your cart is empty</h3>
+                <p>Looks like you have not added any items yet.</p>
+                <a href="/" class="continue-shopping-btn">Continue Shopping</a>
+            </div>
+            {% endif %}
         </div>
     </div>
-    <!-- Display total price of all items in the cart -->
-    <p class="total">Total: $657{{ total }}</p>
-    <!-- Link to proceed to checkout -->
-    <a href="/checkout">Proceed to Checkout</a>
+
+    <script>
+        var mobileNav = document.getElementsByClassName("mobile-nav")[0];
+        var navOverlay = document.getElementsByClassName("nav-overlay")[0];
+
+        function toggleBar() {
+            mobileNav.classList.toggle("active");
+            navOverlay.classList.toggle("active");
+        }
+
+        function closeNav() {
+            mobileNav.classList.remove("active");
+            navOverlay.classList.remove("active");
+        }
+    </script>
 </body>
 </html>

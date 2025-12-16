@@ -29,15 +29,15 @@
         <h1 class="header">{{ category }}</h1>
         <!-- Navigation links -->
         <div class="links">
-          <a href="/login"><i class="fa-regular fa-user"></i>
-            <p>Account</p>
-          </a>
-          <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>
-            <p>Cart</p>
-          </a>
-          <a href="inbox.html"><i class="fa-regular fa-envelope"></i>
-            <p>Inbox</p>
-          </a>
+          {% if logged_in %}
+            <a href="/dashboard"><i class="fa-regular fa-user"></i><span>{{ current_user }}</span></a>
+            <a href="/cart"><i class="fa-solid fa-cart-shopping"></i><span>Cart ({{ get_cart_count() }})</span></a>
+            <a href="/inbox"><i class="fa-regular fa-envelope"></i><span>Inbox</span></a>
+            <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a>
+          {% else %}
+            <a href="/login"><i class="fa-regular fa-user"></i><span>Login</span></a>
+            <a href="/register"><i class="fa-solid fa-user-plus"></i><span>Register</span></a>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -64,25 +64,26 @@
     </div>
   </header>
   <!-- Mobile sidebar -->
+  <div class="nav-overlay" onclick="closeNav()"></div>
   <nav class="mobile-nav">
       <ul>
         <li><a href="/" class="nav-item">
-          <i class="fa-solid fa-house"></i> <p>Home</p>
+          <i class="fa-solid fa-house"></i> <span>Home</span>
         </a></li>
         <li><a href="/product/food" class="nav-item">
-          <i class="fa-solid fa-utensils"></i><p>Food</p>
+          <i class="fa-solid fa-utensils"></i><span>Food</span>
         </a></li>
         <li><a href="/product/fashion" class="nav-item">
-          <i class="fa-solid fa-shirt"></i> <p>Fashion</p>
+          <i class="fa-solid fa-shirt"></i> <span>Fashion</span>
         </a></li>
         <li><a href="/product/books" class="nav-item">
-          <i class="fa-solid fa-book"></i> <p>Books</p>
+          <i class="fa-solid fa-book"></i> <span>Books</span>
         </a></li>
         <li><a href="/product/gadgets" class="nav-item">
-          <i class="fa-solid fa-mobile-screen-button"></i> <p>Gadgets</p>
+          <i class="fa-solid fa-mobile-screen-button"></i> <span>Gadgets</span>
         </a></li>
         <li><a href="/product/electronics" class="nav-item">
-          <i class="fa-solid fa-plug"></i> <p>Electronics</p>
+          <i class="fa-solid fa-plug"></i> <span>Electronics</span>
         </a></li>
       </ul>
   </nav>
@@ -90,15 +91,14 @@
   <div class="mainBody">
     <!-- Mobile navigation options -->
     <div class="mobileOptions">
-      <a href="/login"><i class="fa-regular fa-user"></i>
-        <p>Account</p>
-      </a>
-      <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>
-        <p>Cart</p>
-      </a>
-      <a href="inbox.html"><i class="fa-regular fa-envelope"></i>
-        <p>Inbox</p>
-      </a>
+      {% if logged_in %}
+        <a href="/dashboard"><i class="fa-regular fa-user"></i><span>{{ current_user }}</span></a>
+        <a href="/cart"><i class="fa-solid fa-cart-shopping"></i><span>Cart</span></a>
+        <a href="/inbox"><i class="fa-regular fa-envelope"></i><span>Inbox</span></a>
+      {% else %}
+        <a href="/login"><i class="fa-regular fa-user"></i><span>Login</span></a>
+        <a href="/register"><i class="fa-solid fa-user-plus"></i><span>Register</span></a>
+      {% endif %}
     </div>
     <!-- Main products section -->
     <div class="main_products">
@@ -112,32 +112,33 @@
       {% for product in products %}
       <div class="card">
         <!-- Product image -->
-        <div class="card-image"><img src="{{product[3]}}" alt="{{product[2]}}"></div>
+        <div class="card-image"><img src="{{product['image']}}" alt="{{product['description']}}"></div>
         <!-- Product name -->
-        <p class="p-name">{{product[1]}}</p>
+        <p class="p-name">{{product['name']}}</p>
         <!-- Product description -->
-        <p class="p-description">{{product[2]}}</p>
+        <p class="p-description">{{product['description']}}</p>
+        <!-- Product price -->
+        <p class="p-price">${{product['price']}}</p>
         <!-- Add to cart button -->
-        <button  class="cart-btn" type="button">Add to cart</button>
+        <a href="/add_to_cart/{{product['id']}}" class="cart-btn">Add to cart</a>
       </div>
       {% endfor %}
     </div>
   </div>
   <!-- Script for mobile navigation toggle -->
-  <script type="script" src="{{ url_for('static', filename='script.js')}}"></script>
   <script>
-            var hamburger = document.getElementsByClassName("hamburger")[0]
-            var mobileNav = document.getElementsByClassName("mobile-nav")[0]
+        var mobileNav = document.getElementsByClassName("mobile-nav")[0];
+        var navOverlay = document.getElementsByClassName("nav-overlay")[0];
 
-            function toggleBar() {
-                mobileNav.classList.toggle("active")
-            }
+        function toggleBar() {
+            mobileNav.classList.toggle("active");
+            navOverlay.classList.toggle("active");
+        }
 
-            // Add to cart button functionality
-            const cartBtn = document.getElementsByClassName("cart-btn")
-            for (const btn of cartBtn){
-    
-            }
+        function closeNav() {
+            mobileNav.classList.remove("active");
+            navOverlay.classList.remove("active");
+        }
   </script>
 </body>
 
